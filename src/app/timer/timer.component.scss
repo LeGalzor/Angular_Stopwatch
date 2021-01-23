@@ -1,0 +1,153 @@
+.container {
+  text-align: center;
+  font-family: Lato;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 8em;
+}
+.timer-container {
+  background-color: #181818;
+  height: 100%;
+  width: 25%;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: inset 0px 1px 3px 0px #000;
+  .timer-counter-label {
+    align-items: center;
+    font-size: 27px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    display: grid;
+    .zero-background{
+        position: absolute;
+        right: 46.4rem;
+        top: 0.9em;
+        opacity: 0.2;
+        font-family: Orbitron;
+        font-size: 36px;
+    }
+    .minutes {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .seconds {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .milli {
+      grid-column: 3;
+      grid-row: 1;
+    }
+  }
+  .timer-counter-label > div {
+    color: limegreen;
+  }
+}
+
+.timer-start-text {
+  font-size: 20px;
+}
+.timer-button-container {
+  display: flex;
+  width: 25%;
+  background-color: #f5f5f5;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  .timer-button {
+    width: 10%;
+    cursor: pointer;
+    color: black;
+    padding: 10px;
+  }
+}
+.timer-button.start:hover {
+  background: #a9a9a9;
+  border-bottom-left-radius: 15px;
+}
+.timer-button.lap:hover {
+  background: #a9a9a9;
+}
+.timer-button.clear:hover {
+  background: #a9a9a9;
+  border-bottom-right-radius: 15px;
+}
+.disabled {
+  cursor: not-allowed;
+}
+.disabled:hover {
+  cursor: not-allowed;
+}
+.blink {
+  animation: blinker 1s linear infinite;
+  display: grid;
+}
+.timer-button-container {
+  .timer-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .fa.fa-play,
+    .fa.fa-pause,
+    .fa.fa-stop {
+      margin-right: 10px;
+    }
+  }
+}
+.laps-filled{
+    color: red;
+    font-family: 'Orbitron';
+    margin-bottom: 15px;
+}
+.laps-container {
+  margin-top: 5px;
+  max-height: 30em;
+  display: block;
+  text-align: initial;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+  .lap:hover > .remove-time {
+    display: flex;
+  }
+  .lap {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .zero-background{
+        color: white;
+        opacity: 0.2;
+        position: absolute;
+        font-family: 'Orbitron';
+    }
+    .div:nth-child(1) {
+      margin-top: 15px;
+    }
+    .remove-time {
+      cursor: pointer;
+      display: none;
+      color: #f5f5f5;
+      font-family: sans-serif;
+      justify-content: center;
+      align-items: center;
+      height: 30px;
+      width: 80px;
+      background-color: darkred;
+      border-radius: 10px;
+    }
+    .lap-time {
+        min-width: 86px;
+      color: #f5f5f5;
+      font-family: "Orbitron";
+    }
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

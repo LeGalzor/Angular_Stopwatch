@@ -1,0 +1,75 @@
+<link
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<div class="container">
+  <div class="timer-container">
+    <section class="timer-counter-label">
+      <div
+        style="font-family: Orbitron; font-size: 36px;"
+        *ngIf="counter"
+        [ngClass]="{ blink: !running }"
+      >
+        <span class="minutes">{{ minutes }}:</span>
+        <span class="seconds">{{ seconds }}.</span>
+        <span class="milli">{{ milliseconds }}</span>
+      </div>
+      <div style="font-family: Orbitron; font-size: 36px;" *ngIf="!counter">
+        <span class="minutes">{{ minutes }}:</span>
+        <span class="seconds">{{ seconds }}.</span>
+        <span class="milli">{{ milliseconds }}</span>
+      </div>
+      <div class="zero-background">
+        <span class="minutes">88:</span>
+        <span class="seconds">88.</span>
+        <span class="milli">88</span>
+      </div>
+    </section>
+  </div>
+  <div class="timer-button-container" *ngIf="showTimerControls">
+    <div class="timer-button" style="flex: 1;" (click)="startTimer()">
+      <div class="icon-container" [ngSwitch]="startText">
+        <div *ngSwitchCase="'Play'">
+          <i class="fa fa-play"></i>
+        </div>
+        <div *ngSwitchCase="'Resume'">
+          <i class="fa fa-pause"></i>
+        </div>
+        <div *ngSwitchCase="'Stop'">
+          <i class="fa fa-stop"></i>
+        </div>
+      </div>
+
+      <div clas="timer-text">{{ startText }}</div>
+    </div>
+    <div
+      [disabled]="!counter"
+      [ngClass]="{ disabled: !counter }"
+      class="timer-button lap"
+      (click)="lapTimeSplit()"
+    >
+      <i class="fa fa-clock-o"></i>
+    </div>
+    <div class="timer-button clear" (click)="clearTimer()">
+      <i class="fa fa-trash"></i>
+    </div>
+    <br />
+  </div>
+</div>
+<div class="laps-container">
+  <br />
+  <div class="laps-filled" *ngIf="filledTheLapArray">Laps are filled for now, clear or remove to add more laps</div>
+  <div class="lap-container" *ngFor="let lap of laps; let i = index">
+    <div class="lap">
+      <div class="lap-time">{{ lap }}</div>
+      <div class="zero-background">
+            <span class="minutes">88:</span>
+            <span class="seconds">88.</span>
+            <span class="milli">88</span>
+          </div>
+      <div class="remove-time" (click)="removeLap(i)">{{ removeText }}</div>
+    </div>
+    <br />
+  </div>
+</div>
